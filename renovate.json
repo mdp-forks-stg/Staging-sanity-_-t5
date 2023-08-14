@@ -2,5 +2,17 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
-  ]
+  ],
+  
+"prBodyDefinitions": {
+	"Age": "[![age](https://developer-platform-staging.mend.io/api/mc/badges/age/{{datasource}}/{{replace \"/\" \"%2f\" depName}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)",
+	"Adoption": "[![adoption](https://developer-platform-staging.mend.io/api/mc/badges/adoption/{{datasource}}/{{replace \"/\" \"%2f\" depName}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)",
+	"Passing": "[![passing](https://developer-platform-staging.mend.io/api/mc/badges/compatibility/{{datasource}}/{{replace \"/\" \"%2f\" depName}}/{{{currentVersion}}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)",
+	"Confidence": "[![confidence](https://developer-platform-staging.mend.io/api/mc/badges/confidence/{{datasource}}/{{replace \"/\" \"%2f\" depName}}/{{{currentVersion}}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/)"
+	},
+"packageRules": [{
+    "datasources": ["maven", "npm", "pypi", "nuget","rubygems","sbt-package"],
+    "updateTypes": ["patch", "minor", "major"],
+    "prBodyColumns": ["Package", "Change", "Age", "Adoption", "Passing", "Confidence"]
+}]
 }
